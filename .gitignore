@@ -16,3 +16,17 @@
 /Domain/obj/Domain.csproj.nuget.dgspec.json
 /Domain/obj/project.assets.json
 /Domain/obj/project.nuget.cache
+/Application/obj/Debug/net6.0/Application.assets.cache
+/Application/obj/Debug/net6.0/Application.GeneratedMSBuildEditorConfig.editorconfig
+/Application/obj/Application.csproj.nuget.dgspec.json
+/Application/obj/project.assets.json
+/Application/obj/project.nuget.cache
+/banco_framework/obj/bancoFramework.csproj.nuget.dgspec.json
+/banco_framework/obj/Debug/net6.0/bancoFramework.AssemblyInfo.cs
+/banco_framework/obj/Debug/net6.0/bancoFramework.AssemblyInfoInputs.cache
+/banco_framework/obj/project.assets.json
+/banco_framework/obj/project.nuget.cache
+/Domain/obj/Debug/net6.0/Domain.AssemblyInfo.cs
+/Domain/obj/Debug/net6.0/Domain.AssemblyInfoInputs.cache
+/Domain/obj/Debug/net6.0/Domain.assets.cache
+/Domain/obj/Debug/net6.0/Domain.GeneratedMSBuildEditorConfig.editorconfig
