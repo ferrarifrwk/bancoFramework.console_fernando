@@ -1,5 +1,7 @@
 ﻿using Domain.Model;
 using Domain.Enum;
+using System.Runtime.CompilerServices;
+using Application;
 
 internal class Program
 {
@@ -10,12 +12,11 @@ internal class Program
         Console.WriteLine("Por favor, identifique-se");
         Console.WriteLine("");
         var pessoa = Identificacao();
-        Menu();
     }
 
-    static Pessoa Identificacao()
+    static Cliente Identificacao()
     {
-        var pessoa = new Pessoa();
+        var pessoa = new Cliente();
 
         Console.WriteLine("Seu número de identificação:");
         pessoa.Id = int.Parse(Console.ReadLine());
@@ -28,12 +29,14 @@ internal class Program
         Console.Clear();
 
         Console.WriteLine($"Como posso ajudar {pessoa.Nome}?");
+        Menu(pessoa);
+
         return pessoa;
     }
 
-    static void Menu()
+    static void Menu(Cliente cliente)
     {
-        bool sair = false;
+        var sair = false;
         while (!sair)
         {
             Console.WriteLine("1 - Depósito");
@@ -43,16 +46,35 @@ internal class Program
             Console.Write("Escolha uma opção: ");
             int opcao = 0;
             int.TryParse(Console.ReadKey().KeyChar.ToString(), out opcao);
-           
+
+            var calculo = new Calculo();
             Console.WriteLine();
             switch ((OpcoesEnum)opcao)
             {
                 case OpcoesEnum.Depósito:
-                    Console.WriteLine(nameof(OpcoesEnum.Depósito));
+                    Console.Clear();
+                    Console.WriteLine("Digite o valor:");
+                    float valorDeposito = 0;
+                    while (!float.TryParse(Console.ReadLine(), out valorDeposito))
+                    {
+                        Console.WriteLine("Valor inválido. Digite novamente:");
+                    }
+
+                    cliente.Saldo = AtualizarSaldo(valorDeposito, cliente.Saldo);
+                    Console.WriteLine("Saldo atual é " + cliente.Saldo);
                     break;
 
                 case OpcoesEnum.Saque:
-                    Console.WriteLine(nameof(OpcoesEnum.Saque));
+                    Console.Clear();
+                    Console.WriteLine("Digite o valor:");
+                    float valorSaque = 0;
+                    while (!float.TryParse(Console.ReadLine(), out valorSaque))
+                    {
+                        Console.WriteLine("Valor inválido. Digite novamente:");
+                    }
+
+                    cliente.Saldo = AtualizarSaldo(valorSaque, cliente.Saldo, true);
+                    Console.WriteLine("Saldo atual é " + cliente.Saldo);
                     break;
 
                 case OpcoesEnum.Sair:
@@ -66,5 +88,15 @@ internal class Program
 
             Console.WriteLine();
         }
+    }
+
+    static float AtualizarSaldo(float valor, float saldo, bool saque = false)
+    {
+        var calcular = new Calculo();
+
+        if (saque)
+            return calcular.Subtracao(saldo, valor);
+
+        return calcular.Soma(saldo, valor);
     }
 }
