@@ -1,0 +1,18 @@
+﻿################################################################################
+# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/bancoframework.console
+/Application/bin/Debug/net6.0
+/Application/obj
+/banco_framework/bin/Debug/net6.0
+/banco_framework/obj
+/Domain/bin/Debug/net6.0
+/Domain/obj/Debug/net6.0/ref
+/Domain/obj/Debug/net6.0/refint
+/Domain/obj
+/banco_framework/obj/Debug/net6.0/bancoFramework.assets.cache
+/banco_framework/obj/Debug/net6.0/bancoFramework.GeneratedMSBuildEditorConfig.editorconfig
+/Domain/obj/Domain.csproj.nuget.dgspec.json
+/Domain/obj/project.assets.json
+/Domain/obj/project.nuget.cache
