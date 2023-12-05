@@ -1,6 +1,6 @@
 ﻿using CpfCnpjLibrary;
 
-namespace Application.Features.Pessoa
+namespace Application.Features.Cliente
 {
     public class Authenticate
     {
