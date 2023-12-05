@@ -3,6 +3,7 @@ using Domain.Enum;
 using System.Runtime.CompilerServices;
 using Application;
 using Application.Extensions;
+using Application.Features.Pessoa;
 
 internal class Program
 {
@@ -26,7 +27,14 @@ internal class Program
         pessoa.Nome = Console.ReadLine();
 
         Console.WriteLine("Seu CPF:");
-        pessoa.Cpf = Console.ReadLine();
+        var cpf = Console.ReadLine();
+        do
+        {
+            Console.WriteLine("CPF Inválido, informe novamente.");
+            cpf = Console.ReadLine();
+        } while (!Authenticate.ValidarCpf(cpf));
+
+        pessoa.Cpf = cpf;
         Console.Clear();
 
         Console.WriteLine($"Como posso ajudar {pessoa.Nome}?");
