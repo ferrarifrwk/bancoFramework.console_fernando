@@ -4,7 +4,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        MensagemInicial();
+        StartupMessage();
         var cliente = Identification.Identicate();
         do
         {
@@ -12,7 +12,7 @@ internal class Program
                 Console.WriteLine(item);
 
             Console.ReadKey();
-            MensagemInicial();
+            StartupMessage();
 
             cliente = Identification.Identicate();
         }while(cliente.errorMessages.Count > 0);
@@ -20,7 +20,7 @@ internal class Program
         FinancialMenu.Menu(ref cliente);
     }
 
-    private static void MensagemInicial()
+    private static void StartupMessage()
     {
         Console.Clear();
         Console.WriteLine("Seja bem vindo ao banco Framework");
