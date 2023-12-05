@@ -2,6 +2,7 @@
 using Domain.Enum;
 using System.Runtime.CompilerServices;
 using Application;
+using Application.Extensions;
 
 internal class Program
 {
@@ -60,7 +61,7 @@ internal class Program
                         Console.WriteLine("Valor inválido. Digite novamente:");
                     }
 
-                    cliente.Saldo = AtualizarSaldo(valorDeposito, cliente.Saldo);
+                   cliente.AtualizarSaldo(valorDeposito);
                     Console.WriteLine("Saldo atual é " + cliente.Saldo);
                     break;
 
@@ -73,7 +74,7 @@ internal class Program
                         Console.WriteLine("Valor inválido. Digite novamente:");
                     }
 
-                    cliente.Saldo = AtualizarSaldo(valorSaque, cliente.Saldo, true);
+                    cliente.AtualizarSaldo(valorSaque, true);
                     Console.WriteLine("Saldo atual é " + cliente.Saldo);
                     break;
 
@@ -88,15 +89,5 @@ internal class Program
 
             Console.WriteLine();
         }
-    }
-
-    static float AtualizarSaldo(float valor, float saldo, bool saque = false)
-    {
-        var calcular = new Calculo();
-
-        if (saque)
-            return calcular.Subtracao(saldo, valor);
-
-        return calcular.Soma(saldo, valor);
     }
 }
